@@ -1,6 +1,6 @@
 # Learnings
 
-## 23rd June 2026
+## EDA
 
 ### Data
 - Columns in train dataset: `id`, `prompt`, options `A` to `E`, and `answer`.
@@ -26,3 +26,21 @@ There are only 6 prefixes and 4 suffixes:
 ### To do tom
 - Embeddings / similarity should help here, both for matching duplicate questions and for matching the answer texts that only differ slightly.
 - Inspect more on duplicates part.
+
+Still remaining.
+
+## TF-IDF + Logistic Regression
+
+### Why did LR worked giving reasonably good score even if it doesn't have understanding?
+- TF-IDF + LR has no concept of meaning.
+- Rather it exploits the fact that the correct option tends to share more words/bigrams with the question than the wrong ones do.
+- And it is proven because of roughly ~2x increase in the score from ~0.35 from random/base submission to ~0.75 with this.
+- Helped clear the cutoff xD.
+
+### Why did class weight worked inversely, so slightly?
+- I overlooked a mistake and assigned class weights of {0:3, 1:1}, when infact label 0 makes 80% of the data, while label 1 makes 20%(Unfolded the options to individuals for Logistic regression to be trained upon).
+- I inverted it but before I did so, I submitted it on kaggle and it raised a question.
+- The faulty class weight gave a score of 0.7518 while the correct(better {0:1, 1:3}) gave slighlty less 0.7468, why?
+- Turns out the ranking is mostly invariant to class weights and it is must certainly be noise.
+
+ML part ends here.

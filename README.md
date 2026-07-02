@@ -16,5 +16,7 @@ Goal: The goal of this competition is to build intelligent models that can accur
 
 ---
 
+See [LEARNINGS.MD](notebooks/LEARNINGS.MD) for EDA findings and methodology.
+
 Pratham Shah  
 23f2003391
