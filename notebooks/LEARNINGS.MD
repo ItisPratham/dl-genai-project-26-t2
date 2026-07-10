@@ -43,4 +43,8 @@ Still remaining.
 - The faulty class weight gave a score of 0.7518 while the correct(better {0:1, 1:3}) gave slighlty less 0.7468, why?
 - Turns out the ranking is mostly invariant to class weights and it is must certainly be noise.
 
-ML part ends here.
+## BERT + LR
+
+### Why did BERT+LR score less than TFIDF+LR?
+- BERT embeddings have semantic meaning/understanding unlike tfidfs.
+- It scored lower because it might have struggled as in the options words used are semantically similar.
