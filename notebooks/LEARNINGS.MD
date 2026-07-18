@@ -48,3 +48,9 @@ Still remaining.
 ### Why did BERT+LR score less than TFIDF+LR?
 - BERT embeddings have semantic meaning/understanding unlike tfidfs.
 - It scored lower because it might have struggled as in the options words used are semantically similar.
+
+## BiLSTM from scratch
+- built entire BiLSTM from scratch with bit of help
+- the kaggle score vastly outperformed val score, meaning our val score is unreliable
+- fix will be to implement k-folds cross validation
+- current score disparity MAP@3 is `Val: 0.59` and `Kaggle: 0.71`
