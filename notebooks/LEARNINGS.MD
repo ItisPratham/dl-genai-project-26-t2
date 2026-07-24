@@ -16,6 +16,9 @@ There are only 6 prefixes and 4 suffixes:
 ### Duplicates
 - Only 242 full prompts are exact duplicates.
 - But once I strip the prefix and suffix, 1748 of the questions are duplicates. So most questions repeat, they were just dressed up with different prefixes/suffixes.
+- There remains 252 unique questions out of 2000.
+- Some questions are repeated once(30) while others are repeated 20 times.
+- From those 252 unique questions, 187 of them have exact same options(found using frozen set).
 
 ### Same question, but the answer text changes
 - Each question always maps to the same answer letter across duplicates.
@@ -23,11 +26,16 @@ There are only 6 prefixes and 4 suffixes:
 - Example: "What is the Erlangen program?" has 9 different correct answer texts.
 - The wording changes by small margins, similar words used.
 
-### To do tom
-- Embeddings / similarity should help here, both for matching duplicate questions and for matching the answer texts that only differ slightly.
-- Inspect more on duplicates part.
+### Distribution of answer label
+- B, C are over represented(~combined 47.5%), while E is under ~16.2%
+- Usually longest option is more likely to be correct ~35%
 
-Still remaining.
+### Overwhelming repeatition of questions in test dataset
+- All 500 questions of test dataset are present in train dataset.
+- There are 228 unique question, so 272 duplicates after processing.
+- And 455 out of those 500 questions are exact overlap with same options as of train dataset.
+
+*Theoretically this means I can score 0.95-0.97(0.91 directly correct and 0.75 from BiLSTM) MAP@3 score on kaggle competition by using current BiLSTM model as fallback model and primarily using lookback only, though I wonder how much it would hold up on private dataset. Worth a try ;).*
 
 ## TF-IDF + Logistic Regression
 
@@ -54,3 +62,8 @@ Still remaining.
 - the kaggle score vastly outperformed val score, meaning our val score is unreliable
 - fix will be to implement k-folds cross validation
 - current score disparity MAP@3 is `Val: 0.59` and `Kaggle: 0.71`
+
+## BiLSTM with KfoldsEnsemble and Softmax
+- Switched from BCE to softmax with Cross entropy loss.
+- Before train test split was 80/20 only, now we made 5 folds using np.random and then we train them, and later use ensemble technique on it, to prevent a single improper split.
+- Score on Kaggle is `0.75`
