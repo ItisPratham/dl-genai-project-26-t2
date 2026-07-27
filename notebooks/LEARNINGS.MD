@@ -67,3 +67,16 @@ There are only 6 prefixes and 4 suffixes:
 - Switched from BCE to softmax with Cross entropy loss.
 - Before train test split was 80/20 only, now we made 5 folds using np.random and then we train them, and later use ensemble technique on it, to prevent a single improper split.
 - Score on Kaggle is `0.75`
+
+## DeBERTa
+
+### with K-Fold OOF
+- Used pretrained `microsoft/deberta-v3-small` and finetuned it on question option pairs.
+- Used CrossEntropyLoss over the 5 logits rather than binary classification.
+- The 5 fold models are ensembled for test predictions.
+- MAP@3: `Val: 0.647` and `Kaggle: 0.741`.
+
+### with AutoModelForMultipleChoice
+- Replaced the manually created AutoModel + CLS pooling + Linear architecture with Hugging Face's AutoModelForMultipleChoice.
+- no significant increase in score, which suggests that the classification head was not a major bottleneck.
+- MAP@3: `Val: 0.648` and `Kaggle: 0.743`.
