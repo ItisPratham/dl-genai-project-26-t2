@@ -80,3 +80,11 @@ There are only 6 prefixes and 4 suffixes:
 - Replaced the manually created AutoModel + CLS pooling + Linear architecture with Hugging Face's AutoModelForMultipleChoice.
 - no significant increase in score, which suggests that the classification head was not a major bottleneck.
 - MAP@3: `Val: 0.648` and `Kaggle: 0.743`.
+
+### DeBERTa-base
+- Takes quite bit of time and scores less than cutoof.
+- Though interesting take of logits vs probabilities averaging.
+- Kaggle MAP@3 for `Logits: 0.717` vs `Probabilities: 0.722`
+
+## MiniLM
+- Just replaced deberta small with minilm, got `0.745 MAP@3`
