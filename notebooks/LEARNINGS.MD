@@ -88,3 +88,7 @@ There are only 6 prefixes and 4 suffixes:
 
 ## MiniLM
 - Just replaced deberta small with minilm, got `0.745 MAP@3`
+
+## ENSEMBLE Of DeBERTa and  and MiniLM
+- Kaggle score `MAP@3: 0.747`
+- Expected more of it, but turns out both predicts pretty much the same unlike complementing each other's weakness (hypothesis).
