@@ -37,6 +37,13 @@ There are only 6 prefixes and 4 suffixes:
 
 *Theoretically this means I can score 0.95-0.97(0.91 directly correct and 0.75 from BiLSTM) MAP@3 score on kaggle competition by using current BiLSTM model as fallback model and primarily using lookback only, though I wonder how much it would hold up on private dataset. Worth a try ;).*
 
+### Data leakage
+
+Issue of question leakage where a single word has been changed.  
+`What happens to an initially inhomogeneous physical framework that is isolated by a thermodynamic operation?
+What happens to an initially inhomogeneous physical mechanism that is isolated by a thermodynamic operation?
+What happens to an initially inhomogeneous physical structure that is isolated by a thermodynamic operation?`
+
 ## TF-IDF + Logistic Regression
 
 ### Why did LR worked giving reasonably good score even if it doesn't have understanding?
